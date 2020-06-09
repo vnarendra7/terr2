@@ -12,6 +12,16 @@ pipeline {
                 git 'https://github.com/kaza514/terr2.git'
             }
         }
+        stage ('Approval') 
+        {
+            steps {
+              script {
+                timeout(time: 2, unit: 'HOURS') {
+                input(id: "Deploy", message: "Deploy ${params.workspace}?", ok: 'Deploy')
+                 }
+              }
+            }
+        }
         stage('TF Plan') {
             when {
                 expression { params.action == 'create' }
