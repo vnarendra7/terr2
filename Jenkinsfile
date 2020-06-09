@@ -16,6 +16,7 @@ pipeline {
         {
             steps {
               script {
+                sleep 10s
                 timeout(time: 2, unit: 'HOURS') {
                 input(id: "Deploy", message: "Deploy ${params.workspace}?", ok: 'Deploy')
                  }
