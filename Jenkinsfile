@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'Lable1'
-    }
+    agent any
     parameters {
         choice(name: 'action', choices: 'create\ndestroy', description: 'Create/update or destroy the server')
         string(name: 'workspace', description: "Name of the workspace")
@@ -9,7 +7,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git 'https://github.com/kaza514/terr2.git'
+                git 'https://github.com/vnarendra7/terr2.git'
             }
         }
         stage ('Approval') 
